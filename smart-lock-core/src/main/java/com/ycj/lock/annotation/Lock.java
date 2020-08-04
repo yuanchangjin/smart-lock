@@ -32,6 +32,13 @@ public @interface Lock {
     String mainKey() default "";
 
 
+    /**
+     * key
+     * @return
+     */
+    String key() default "";
+
+
 
     /**
      * 锁类型
