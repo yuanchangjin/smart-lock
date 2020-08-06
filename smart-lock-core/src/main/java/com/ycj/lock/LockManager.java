@@ -9,8 +9,8 @@ public interface LockManager {
 
     /**
      * 获取Lock对象
-     * @param name
+     * @param 
      * @return
      */
-    Lock getLock(String name);
+    Lock getLock();
 }

@@ -21,7 +21,7 @@ public class RedissonLockManager implements LockManager {
     }
 
     @Override
-    public Lock getLock(String name) {
+    public Lock getLock() {
         return this.lock;
     }
 }
