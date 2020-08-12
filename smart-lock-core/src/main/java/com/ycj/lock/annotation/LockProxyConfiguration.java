@@ -6,6 +6,7 @@ import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Role;
+import org.springframework.core.Ordered;
 
 /**
  * @Author: yuanchangjin
@@ -22,6 +23,7 @@ public class LockProxyConfiguration {
         LockAdvisor lockAdvisor =new LockAdvisor();
         lockAdvisor.setAdvice(lockInterceptor());
         lockAdvisor.setAdviceBeanName("lockAdvisor");
+        lockAdvisor.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return lockAdvisor;
     }
 
