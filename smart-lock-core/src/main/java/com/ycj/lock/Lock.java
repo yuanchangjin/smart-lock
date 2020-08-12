@@ -15,7 +15,7 @@ public interface Lock {
      * @param timeOut
      * @return
      */
-    Lock lock(String lockKey, long timeOut);
+    Object lock(String lockKey, long timeOut);
 
     /**
      *
@@ -24,7 +24,7 @@ public interface Lock {
      * @param timeOut
      * @return
      */
-    Lock lock(String lockKey, LockType lockType, long timeOut);
+    Object lock(String lockKey, LockType lockType, long timeOut);
 
     /**
      *
@@ -53,5 +53,5 @@ public interface Lock {
      *
      * @param lock
      */
-    void unLock(Lock lock);
+    void unLock(Object lock);
 }

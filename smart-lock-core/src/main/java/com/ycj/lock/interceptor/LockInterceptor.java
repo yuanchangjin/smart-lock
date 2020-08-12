@@ -4,9 +4,11 @@ import com.ycj.lock.LockManager;
 import com.ycj.lock.annotation.Lock;
 import org.aopalliance.intercept.MethodInterceptor;
 import org.aopalliance.intercept.MethodInvocation;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
 import java.util.Objects;
+import java.util.Optional;
 
 /**
  * @Author: yuanchangjin
@@ -15,9 +17,7 @@ import java.util.Objects;
  */
 public class LockInterceptor implements MethodInterceptor,Serializable {
 
-    /**
-     *
-     */
+    @Autowired
     private LockManager lockManager;
 
 
@@ -27,12 +27,15 @@ public class LockInterceptor implements MethodInterceptor,Serializable {
         Lock lock = methodInvocation.getMethod().getAnnotation(Lock.class);
 
         if (Objects.nonNull(lock)) {
-            com.ycj.lock.Lock lock1 = lockManager.getLock("");
+            com.ycj.lock.Lock lock1 = lockManager.getLock();
             try {
-                lock1.lock("", 0L);
+                Optional.ofNullable(lock.key()).ifPresent(k ->
+                        lock1.lock(k, lock.timeOut())
+                );
+
                 return methodInvocation.proceed();
             } finally {
-                lock1.unLock("");
+                Optional.ofNullable(lock.key()).ifPresent(lock1::unLock);
             }
         }
         return methodInvocation.proceed();
