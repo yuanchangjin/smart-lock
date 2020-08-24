@@ -6,7 +6,7 @@
 
 #### Maven
 
-<dependency>
+	<dependency>
 		  <groupId>com.ycj</groupId>
 		  <artifactId>smart-lock-core</artifactId>
 		  <version>1.0-SNAPSHOT</version>
