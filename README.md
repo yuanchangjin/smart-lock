@@ -12,7 +12,7 @@
 		  <version>1.0-SNAPSHOT</version>
 	  </dependency>
     
-## Java
+#### Java
 
 1、实例化具体实现的Lock
  @Bean
