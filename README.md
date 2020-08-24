@@ -13,7 +13,7 @@
 	  </dependency>
     
 #### Java
-
+```
 1、实例化具体实现的Lock
  @Bean
     public Lock redissonLock(){
@@ -37,5 +37,5 @@
       .....
     }
 
-
+```
 
