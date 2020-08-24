@@ -30,7 +30,7 @@ public class LockInterceptor implements MethodInterceptor,Serializable {
             com.ycj.lock.Lock lock1 = lockManager.getLock();
             try {
                 Optional.ofNullable(lock.key()).ifPresent(k ->
-                        lock1.lock(k, lock.timeOut())
+                        lock1.lock(k,lock.lockType(), lock.timeOut())
                 );
 
                 return methodInvocation.proceed();
