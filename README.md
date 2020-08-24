@@ -32,6 +32,7 @@
 
 4、具体方法上加@Lock(key = "lock",lockType = LockType.READ_LOCK,timeOut = 5L)如：
 
+ @Lock(key = "lock",lockType = LockType.READ_LOCK,timeOut = 5L)
  public User getUser(String name){
       .....
       .....
