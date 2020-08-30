@@ -56,11 +56,13 @@ public class RedissonLock implements Lock {
 
     @Override
     public void unLock(String lockKey) {
-
+        RLock rLock =redissonClient.getLock(lockKey);
+        rLock.unlock();
     }
 
     @Override
     public void unLock(Object lock) {
-
+        RLock rLock = (RLock)lock;
+        rLock.unlock();
     }
 }

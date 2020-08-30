@@ -35,7 +35,9 @@ public class LockInterceptor implements MethodInterceptor,Serializable {
 
                 return methodInvocation.proceed();
             } finally {
-                Optional.ofNullable(lock.key()).ifPresent(lock1::unLock);
+                Optional.ofNullable(lock.key()).ifPresent(
+                        lock1::unLock);
+
             }
         }
         return methodInvocation.proceed();
