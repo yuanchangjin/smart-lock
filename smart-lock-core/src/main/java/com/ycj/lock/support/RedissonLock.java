@@ -32,12 +32,12 @@ public class RedissonLock implements Lock {
         if(LockType.READ_LOCK==lockType){
             RReadWriteLock rReadWriteLock =redissonClient.getReadWriteLock(lockKey);
             rReadWriteLock.expire(timeOut,TimeUnit.SECONDS);
-            rReadWriteLock.readLock();
+            rReadWriteLock.readLock().lock(timeOut,TimeUnit.SECONDS);
             return rReadWriteLock;
         }else if(LockType.WRITE_lOCK==lockType){
             RReadWriteLock rReadWriteLock =redissonClient.getReadWriteLock(lockKey);
             rReadWriteLock.expire(timeOut,TimeUnit.SECONDS);
-            rReadWriteLock.writeLock();
+            rReadWriteLock.writeLock().lock(timeOut,TimeUnit.SECONDS);
             return rReadWriteLock;
         }else {
             return  lock(lockKey,timeOut);
